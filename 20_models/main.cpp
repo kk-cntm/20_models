@@ -7,7 +7,9 @@
 #include "render/Shader.h"
 #include "render/Camera.h"
 #include "render/Model.h"
-#include "render/DirLight.h"
+#include "render/light/DirLight.h"
+#include "render/light/SpotLight.h"
+#include "render/light/Attenuation.h"
 
 int width = 800;
 int height = 600;
@@ -157,12 +159,24 @@ int main(int argc, const char * argv[]) {
     
     render::Shader cubeProgram("./shaders/model-vs.glsl", "./shaders/model-fs.glsl");
     render::Model backpackModel("./assets/backpack/backpack.obj");
-    render::DirLight dirLight(
+    render::light::DirLight dirLight(
         glm::vec3(0.0f, 0.0f, -1.0f),
         glm::vec3(0.2f, 0.2f, 0.2f),
         glm::vec3(0.7f, 0.7f, 0.7f),
         glm::vec3(0.9f, 0.9f, 0.9f)
     );
+    std::vector<render::light::SpotLight> spotLights = {
+        render::light::SpotLight(
+            glm::vec3(0.0342912f, 0.12814f, -1.87929f),
+            glm::vec3(0.0f, 0.0f, 1.0f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.4f, 0.4f, 0.4f),
+            glm::vec3(0.6f, 0.6f, 0.6f),
+            5.5f,
+            8.0f,
+            render::light::Attenuation::seven
+        )
+    };
     
     while (!glfwWindowShouldClose(window)) {
         process_input(window);
@@ -191,6 +205,10 @@ int main(int argc, const char * argv[]) {
         
         camera.Set(cubeProgram);
         dirLight.Set(cubeProgram);
+        
+        for (int i = 0; i < spotLights.size(); i++) {
+            spotLights[i].Set(cubeProgram, i);
+        }
         
         backpackModel.Draw(cubeProgram);
         
