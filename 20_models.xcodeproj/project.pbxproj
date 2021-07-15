@@ -13,6 +13,7 @@
 		2A2F9EEC269C9B2200FACC82 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9EEA269C9B2200FACC82 /* Model.cpp */; };
 		2A2F9EF8269DAC6800FACC82 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9EF6269DAC6800FACC82 /* Timer.cpp */; };
 		2A2F9EFA269EF8A000FACC82 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9EF9269EF8A000FACC82 /* Texture.cpp */; };
+		2A2F9F00269F129100FACC82 /* DirLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9EFE269F129100FACC82 /* DirLight.cpp */; };
 		2A41F7A026736FA600678B80 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F79F26736FA600678B80 /* main.cpp */; };
 		2A41F7B8267372D500678B80 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
 		2A41F7B9267372F700678B80 /* libglfw.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
@@ -57,6 +58,8 @@
 		2A2F9EF6269DAC6800FACC82 /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		2A2F9EF7269DAC6800FACC82 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		2A2F9EF9269EF8A000FACC82 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		2A2F9EFE269F129100FACC82 /* DirLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DirLight.cpp; sourceTree = "<group>"; };
+		2A2F9EFF269F129100FACC82 /* DirLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirLight.h; sourceTree = "<group>"; };
 		2A41F79C26736FA600678B80 /* 20_models */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 20_models; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A41F79F26736FA600678B80 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2A41F7AC26736FF200678B80 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				2A2E3687269C69A600FBA2F1 /* Mesh.h */,
 				2A2F9EEA269C9B2200FACC82 /* Model.cpp */,
 				2A2F9EEB269C9B2200FACC82 /* Model.h */,
+				2A2F9EFE269F129100FACC82 /* DirLight.cpp */,
+				2A2F9EFF269F129100FACC82 /* DirLight.h */,
 			);
 			path = render;
 			sourceTree = "<group>";
@@ -1064,6 +1069,7 @@
 				2A2F9EF8269DAC6800FACC82 /* Timer.cpp in Sources */,
 				2A41F7A026736FA600678B80 /* main.cpp in Sources */,
 				2A41F7C82675109200678B80 /* stb_image.cpp in Sources */,
+				2A2F9F00269F129100FACC82 /* DirLight.cpp in Sources */,
 				2A41F7BE2673927600678B80 /* Shader.cpp in Sources */,
 				2A41FD00267E310B00678B80 /* Camera.cpp in Sources */,
 				2A2E3688269C69A600FBA2F1 /* Mesh.cpp in Sources */,

@@ -7,6 +7,7 @@
 #include "render/Shader.h"
 #include "render/Camera.h"
 #include "render/Model.h"
+#include "render/DirLight.h"
 
 int width = 800;
 int height = 600;
@@ -156,6 +157,12 @@ int main(int argc, const char * argv[]) {
     
     render::Shader cubeProgram("./shaders/model-vs.glsl", "./shaders/model-fs.glsl");
     render::Model backpackModel("./assets/backpack/backpack.obj");
+    render::DirLight dirLight(
+        glm::vec3(0.0f, 0.0f, -1.0f),
+        glm::vec3(0.2f, 0.2f, 0.2f),
+        glm::vec3(0.7f, 0.7f, 0.7f),
+        glm::vec3(0.9f, 0.9f, 0.9f)
+    );
     
     while (!glfwWindowShouldClose(window)) {
         process_input(window);
@@ -172,18 +179,18 @@ int main(int argc, const char * argv[]) {
         
         glm::mat4 model(1.0f);
         model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-
-        glm::mat4 view = camera.GetView();
         
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(fov), (float)width / (float)height, 0.1f, 100.0f);
         
         cubeProgram.use();
         
-        cubeProgram.setValue("view", view);
+        cubeProgram.setValue("view", camera.GetView());
         cubeProgram.setValue("projection", projection);
         cubeProgram.setValue("model", model);
-        cubeProgram.setValue("cameraPos", camera.GetPosition());
+        
+        camera.Set(cubeProgram);
+        dirLight.Set(cubeProgram);
         
         backpackModel.Draw(cubeProgram);
         

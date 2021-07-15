@@ -16,6 +16,10 @@ Camera::Camera(CameraArgs args):
     CalculateDirection();
 };
 
+void Camera::Set(Shader& shader) {
+    shader.setValue("cameraPos", m_position);
+}
+
 void Camera::AddYaw(float yaw) {
     m_yaw += yaw;
     

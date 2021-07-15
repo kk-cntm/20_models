@@ -3,6 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "Shader.h"
 
 namespace render {
 
@@ -36,6 +37,7 @@ private:
     
 public:
     Camera(CameraArgs args);
+    void Set(Shader& shader);
     void AddYaw(float yaw);
     void AddPitch(float pitch);
     void SetDeltaTime(float deltaTime);
