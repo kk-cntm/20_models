@@ -5,7 +5,7 @@
 namespace render::light {
 
 struct Attenuation {
-    enum Distance { seven };
+    enum Distance { n_7, n_32 };
     
     float constant;
     float linear;

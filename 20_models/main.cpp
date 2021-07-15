@@ -9,6 +9,7 @@
 #include "render/Model.h"
 #include "render/light/DirLight.h"
 #include "render/light/SpotLight.h"
+#include "render/light/PointLight.h"
 #include "render/light/Attenuation.h"
 
 int width = 800;
@@ -167,14 +168,23 @@ int main(int argc, const char * argv[]) {
     );
     std::vector<render::light::SpotLight> spotLights = {
         render::light::SpotLight(
-            glm::vec3(0.0342912f, 0.12814f, -1.87929f),
+            glm::vec3(0.0f, 0.0f, -1.0f),
             glm::vec3(0.0f, 0.0f, 1.0f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.05f, 0.05f, 0.05f),
             glm::vec3(0.4f, 0.4f, 0.4f),
             glm::vec3(0.6f, 0.6f, 0.6f),
             5.5f,
             8.0f,
-            render::light::Attenuation::seven
+            render::light::Attenuation::n_7
+        )
+    };
+    std::vector<render::light::PointLight> pointLights = {
+        render::light::PointLight(
+            glm::vec3(0.0342912f, 0.12814f, -1.87929f),
+            glm::vec3(0.05f, 0.05f, 0.05f),
+            glm::vec3(0.4f, 0.4f, 0.4f),
+            glm::vec3(0.5f, 0.5f, 0.5f),
+            render::light::Attenuation::n_32
         )
     };
     
@@ -208,6 +218,10 @@ int main(int argc, const char * argv[]) {
         
         for (int i = 0; i < spotLights.size(); i++) {
             spotLights[i].Set(cubeProgram, i);
+        }
+        
+        for (int i = 0; i < pointLights.size(); i++) {
+            pointLights[i].Set(cubeProgram, i);
         }
         
         backpackModel.Draw(cubeProgram);

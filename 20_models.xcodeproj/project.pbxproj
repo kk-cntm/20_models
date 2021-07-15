@@ -16,6 +16,7 @@
 		2A2F9F00269F129100FACC82 /* DirLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9EFE269F129100FACC82 /* DirLight.cpp */; };
 		2A2F9F0326A014C400FACC82 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F0126A014C400FACC82 /* SpotLight.cpp */; };
 		2A2F9F1126A0234300FACC82 /* Attenuation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F0F26A0234300FACC82 /* Attenuation.cpp */; };
+		2A2F9F1426A0601F00FACC82 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F1226A0601F00FACC82 /* PointLight.cpp */; };
 		2A41F7A026736FA600678B80 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F79F26736FA600678B80 /* main.cpp */; };
 		2A41F7B8267372D500678B80 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
 		2A41F7B9267372F700678B80 /* libglfw.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
@@ -66,6 +67,8 @@
 		2A2F9F0226A014C400FACC82 /* SpotLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotLight.h; sourceTree = "<group>"; };
 		2A2F9F0F26A0234300FACC82 /* Attenuation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Attenuation.cpp; sourceTree = "<group>"; };
 		2A2F9F1026A0234300FACC82 /* Attenuation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Attenuation.h; sourceTree = "<group>"; };
+		2A2F9F1226A0601F00FACC82 /* PointLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
+		2A2F9F1326A0601F00FACC82 /* PointLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
 		2A41F79C26736FA600678B80 /* 20_models */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 20_models; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A41F79F26736FA600678B80 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2A41F7AC26736FF200678B80 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				2A2F9F0226A014C400FACC82 /* SpotLight.h */,
 				2A2F9F0F26A0234300FACC82 /* Attenuation.cpp */,
 				2A2F9F1026A0234300FACC82 /* Attenuation.h */,
+				2A2F9F1226A0601F00FACC82 /* PointLight.cpp */,
+				2A2F9F1326A0601F00FACC82 /* PointLight.h */,
 			);
 			path = light;
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 			files = (
 				2A2F9EEC269C9B2200FACC82 /* Model.cpp in Sources */,
 				2A2F9EF8269DAC6800FACC82 /* Timer.cpp in Sources */,
+				2A2F9F1426A0601F00FACC82 /* PointLight.cpp in Sources */,
 				2A2F9F0326A014C400FACC82 /* SpotLight.cpp in Sources */,
 				2A41F7A026736FA600678B80 /* main.cpp in Sources */,
 				2A41F7C82675109200678B80 /* stb_image.cpp in Sources */,
