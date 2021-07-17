@@ -226,10 +226,10 @@ int main(int argc, const char * argv[]) {
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(fov), (float)width / (float)height, 0.1f, 100.0f);
         
-        cubeProgram.use();
-        cubeProgram.setValue("view", camera.GetView());
-        cubeProgram.setValue("projection", projection);
-        cubeProgram.setValue("model", model);
+        cubeProgram.Use();
+        cubeProgram.SetValue("view", camera.GetView());
+        cubeProgram.SetValue("projection", projection);
+        cubeProgram.SetValue("model", model);
         
         camera.Set(cubeProgram);
         dirLight.Set(cubeProgram);
@@ -241,13 +241,12 @@ int main(int argc, const char * argv[]) {
         for (int i = 0; i < pointLights.size(); i++) {
             pointLights[i].Set(cubeProgram, i);
         }
-        
-        cubeProgram.use();
+
         backpackModel.Draw(cubeProgram);
         
-        lightProgram.use();
-        lightProgram.setValue("view", camera.GetView());
-        lightProgram.setValue("projection", projection);
+        lightProgram.Use();
+        lightProgram.SetValue("view", camera.GetView());
+        lightProgram.SetValue("projection", projection);
         
         for (int i = 0; i < spotLights.size(); i++) {
             spotLights[i].Draw(lightProgram);

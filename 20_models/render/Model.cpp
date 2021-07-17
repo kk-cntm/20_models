@@ -62,9 +62,9 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene) {
         }
         
         Vertex vertex;
-        vertex.Position = position;
-        vertex.Normal = normal;
-        vertex.TexCoords = texCoords;
+        vertex.position = position;
+        vertex.normal = normal;
+        vertex.texCoords = texCoords;
         
         vertices.push_back(vertex);
     }

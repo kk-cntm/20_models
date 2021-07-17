@@ -21,13 +21,13 @@ PointLight::PointLight(glm::vec3 pos, glm::vec3 amb, glm::vec3 diff, glm::vec3 s
 void PointLight::Set(Shader& shader, int index) {
     const std::string base = "pointLights[" + std::to_string(index) + "].";
     
-    shader.setValue((base + "position").c_str(), m_position);
-    shader.setValue((base + "ambient").c_str(), m_ambient);
-    shader.setValue((base + "diffuse").c_str(), m_diffuse);
-    shader.setValue((base + "specular").c_str(), m_specular);
-    shader.setValue((base + "constant").c_str(), m_attenuation.constant);
-    shader.setValue((base + "linear").c_str(), m_attenuation.linear);
-    shader.setValue((base + "quadratic").c_str(), m_attenuation.quadratic);
+    shader.SetValue((base + "position").c_str(), m_position);
+    shader.SetValue((base + "ambient").c_str(), m_ambient);
+    shader.SetValue((base + "diffuse").c_str(), m_diffuse);
+    shader.SetValue((base + "specular").c_str(), m_specular);
+    shader.SetValue((base + "constant").c_str(), m_attenuation.constant);
+    shader.SetValue((base + "linear").c_str(), m_attenuation.linear);
+    shader.SetValue((base + "quadratic").c_str(), m_attenuation.quadratic);
 }
 
 void PointLight::Draw(Shader& shader) const {

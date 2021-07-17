@@ -28,10 +28,10 @@ void Mesh::SetupMesh() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
     glEnableVertexAttribArray(0);
     
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
     glEnableVertexAttribArray(1);
     
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoords));
     glEnableVertexAttribArray(2);
     
     glBindVertexArray(0);
@@ -57,7 +57,7 @@ void Mesh::Draw(Shader& shader) {
             assert(0 && "[ERROR] Mesh::Draw not valid texture type");
         }
         
-        shader.setValue(("material." + name).c_str(), i);
+        shader.SetValue(("material." + name).c_str(), i);
         glBindTexture(GL_TEXTURE_2D, m_textures[i].id);
     }
     

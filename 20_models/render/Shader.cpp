@@ -31,35 +31,35 @@ Shader::Shader(const char* vPath, const char* fPath) {
         std::cout << "[ERROR] Failed to load shader " << strerror(errno) << std::endl;
     }
     
-    unsigned int vShader = compileShader(vStrCode.c_str(), GL_VERTEX_SHADER);
-    unsigned int fShader = compileShader(fStrCode.c_str(), GL_FRAGMENT_SHADER);
-    ID = compileProgram(vShader, fShader);
+    unsigned int vShader = CompileShader(vStrCode.c_str(), GL_VERTEX_SHADER);
+    unsigned int fShader = CompileShader(fStrCode.c_str(), GL_FRAGMENT_SHADER);
+    ID = CompileProgram(vShader, fShader);
     
     glDeleteShader(vShader);
     glDeleteShader(fShader);
 }
 
-void Shader::use() {
+void Shader::Use() {
     glUseProgram(ID);
 }
 
-void Shader::setValue(const char* name, float value) {
+void Shader::SetValue(const char* name, float value) {
     glUniform1f(glGetUniformLocation(ID, name), value);
 }
 
-void Shader::setValue(const char* name, int value) {
+void Shader::SetValue(const char* name, int value) {
     glUniform1i(glGetUniformLocation(ID, name), value);
 }
 
-void Shader::setValue(const char* name, const glm::mat4& value) {
+void Shader::SetValue(const char* name, const glm::mat4& value) {
     glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, glm::value_ptr(value));
 }
 
-void Shader::setValue(const char* name, const glm::vec3& value) {
+void Shader::SetValue(const char* name, const glm::vec3& value) {
     glUniform3fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
 }
 
-unsigned int Shader::compileShader(const char* src, const GLint type) {
+unsigned int Shader::CompileShader(const char* src, const GLint type) {
     unsigned int id = glCreateShader(type);
     int success;
     char log[512];
@@ -77,7 +77,7 @@ unsigned int Shader::compileShader(const char* src, const GLint type) {
     return id;
 }
 
-unsigned int Shader::compileProgram(unsigned int vShader, unsigned int fShader) {
+unsigned int Shader::CompileProgram(unsigned int vShader, unsigned int fShader) {
     unsigned int id = glCreateProgram();
     int success;
     char log[512];

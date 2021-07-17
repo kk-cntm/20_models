@@ -15,7 +15,7 @@ public:
     void Set(Shader& shader, int index);
     void Draw(Shader& shader) const;
     void SetDirection(glm::vec3 direction);
-    void setPosition(glm::vec3 position);
+    void SetPosition(glm::vec3 position);
 private:
     glm::vec3 m_position;
     glm::vec3 m_direction;

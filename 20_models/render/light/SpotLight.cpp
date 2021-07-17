@@ -24,16 +24,16 @@ SpotLight::SpotLight(glm::vec3 pos, glm::vec3 dir, glm::vec3 amb, glm::vec3 diff
 void SpotLight::Set(Shader& shader, int index) {
     const std::string base = "spotLights[" + std::to_string(index) + "].";
     
-    shader.setValue((base + "position").c_str(), m_position);
-    shader.setValue((base + "direction").c_str(), m_direction);
-    shader.setValue((base + "ambient").c_str(), m_ambient);
-    shader.setValue((base + "diffuse").c_str(), m_diffuse);
-    shader.setValue((base + "specular").c_str(), m_specular);
-    shader.setValue((base + "constant").c_str(), m_attenuation.constant);
-    shader.setValue((base + "linear").c_str(), m_attenuation.linear);
-    shader.setValue((base + "quadratic").c_str(), m_attenuation.quadratic);
-    shader.setValue((base + "innerCone").c_str(), m_innerConeCos);
-    shader.setValue((base + "outerCone").c_str(), m_outerConeCos);
+    shader.SetValue((base + "position").c_str(), m_position);
+    shader.SetValue((base + "direction").c_str(), m_direction);
+    shader.SetValue((base + "ambient").c_str(), m_ambient);
+    shader.SetValue((base + "diffuse").c_str(), m_diffuse);
+    shader.SetValue((base + "specular").c_str(), m_specular);
+    shader.SetValue((base + "constant").c_str(), m_attenuation.constant);
+    shader.SetValue((base + "linear").c_str(), m_attenuation.linear);
+    shader.SetValue((base + "quadratic").c_str(), m_attenuation.quadratic);
+    shader.SetValue((base + "innerCone").c_str(), m_innerConeCos);
+    shader.SetValue((base + "outerCone").c_str(), m_outerConeCos);
 }
 
 void SpotLight::Draw(Shader& shader) const {
@@ -44,6 +44,6 @@ void SpotLight::SetDirection(glm::vec3 direction) {
     m_direction = direction;
 }
 
-void SpotLight::setPosition(glm::vec3 position) {
+void SpotLight::SetPosition(glm::vec3 position) {
     m_position = position;
 }

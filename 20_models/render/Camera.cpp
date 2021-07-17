@@ -17,7 +17,7 @@ Camera::Camera(CameraArgs args):
 };
 
 void Camera::Set(Shader& shader) {
-    shader.setValue("cameraPos", m_position);
+    shader.SetValue("cameraPos", m_position);
 }
 
 void Camera::AddYaw(float yaw) {
