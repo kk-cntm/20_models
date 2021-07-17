@@ -1,4 +1,5 @@
 #include <string>
+#include <utility>
 #include "SpotLight.h"
 
 using namespace render::light;
@@ -14,6 +15,12 @@ SpotLight::SpotLight(glm::vec3 pos, glm::vec3 dir, glm::vec3 amb, glm::vec3 diff
     m_attenuation(light::Attenuation::FromDistance(distance))
 {}
 
+SpotLight::SpotLight(glm::vec3 pos, glm::vec3 dir, glm::vec3 amb, glm::vec3 diff, glm::vec3 spec, float innerCone, float outerCone, light::Attenuation::Distance distance, std::shared_ptr<IDrawable> model):
+    SpotLight(pos, dir, amb, diff, spec, innerCone, outerCone, distance)
+{
+    m_model = model;
+}
+
 void SpotLight::Set(Shader& shader, int index) {
     const std::string base = "spotLights[" + std::to_string(index) + "].";
     
@@ -27,6 +34,10 @@ void SpotLight::Set(Shader& shader, int index) {
     shader.setValue((base + "quadratic").c_str(), m_attenuation.quadratic);
     shader.setValue((base + "innerCone").c_str(), m_innerConeCos);
     shader.setValue((base + "outerCone").c_str(), m_outerConeCos);
+}
+
+void SpotLight::Draw(Shader& shader) const {
+    if (static_cast<bool>(m_model)) m_model->Draw(shader);
 }
 
 void SpotLight::SetDirection(glm::vec3 direction) {

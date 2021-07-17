@@ -17,6 +17,8 @@
 		2A2F9F0326A014C400FACC82 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F0126A014C400FACC82 /* SpotLight.cpp */; };
 		2A2F9F1126A0234300FACC82 /* Attenuation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F0F26A0234300FACC82 /* Attenuation.cpp */; };
 		2A2F9F1426A0601F00FACC82 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F1226A0601F00FACC82 /* PointLight.cpp */; };
+		2A2F9F1826A183C500FACC82 /* Cuboid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F1626A183C500FACC82 /* Cuboid.cpp */; };
+		2A2F9F1E26A2FFCA00FACC82 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A2F9F1D26A2FFCA00FACC82 /* Material.cpp */; };
 		2A41F7A026736FA600678B80 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A41F79F26736FA600678B80 /* main.cpp */; };
 		2A41F7B8267372D500678B80 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
 		2A41F7B9267372F700678B80 /* libglfw.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A41F7B7267372D500678B80 /* libglfw.3.dylib */; };
@@ -69,6 +71,11 @@
 		2A2F9F1026A0234300FACC82 /* Attenuation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Attenuation.h; sourceTree = "<group>"; };
 		2A2F9F1226A0601F00FACC82 /* PointLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
 		2A2F9F1326A0601F00FACC82 /* PointLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
+		2A2F9F1626A183C500FACC82 /* Cuboid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cuboid.cpp; sourceTree = "<group>"; };
+		2A2F9F1726A183C500FACC82 /* Cuboid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cuboid.h; sourceTree = "<group>"; };
+		2A2F9F1926A19B0600FACC82 /* IDrawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDrawable.h; sourceTree = "<group>"; };
+		2A2F9F1B26A1A6F500FACC82 /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		2A2F9F1D26A2FFCA00FACC82 /* Material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		2A41F79C26736FA600678B80 /* 20_models */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 20_models; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A41F79F26736FA600678B80 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2A41F7AC26736FF200678B80 /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
@@ -450,6 +457,7 @@
 		2A2E3684269C68E100FBA2F1 /* render */ = {
 			isa = PBXGroup;
 			children = (
+				2A2F9F1526A183B300FACC82 /* shape */,
 				2A2F9F0A26A01FE100FACC82 /* light */,
 				2A41FCFE267E310B00678B80 /* Camera.cpp */,
 				2A41FCFF267E310B00678B80 /* Camera.h */,
@@ -462,6 +470,9 @@
 				2A2E3687269C69A600FBA2F1 /* Mesh.h */,
 				2A2F9EEA269C9B2200FACC82 /* Model.cpp */,
 				2A2F9EEB269C9B2200FACC82 /* Model.h */,
+				2A2F9F1926A19B0600FACC82 /* IDrawable.h */,
+				2A2F9F1B26A1A6F500FACC82 /* Material.h */,
+				2A2F9F1D26A2FFCA00FACC82 /* Material.cpp */,
 			);
 			path = render;
 			sourceTree = "<group>";
@@ -512,6 +523,15 @@
 				2A2F9F1326A0601F00FACC82 /* PointLight.h */,
 			);
 			path = light;
+			sourceTree = "<group>";
+		};
+		2A2F9F1526A183B300FACC82 /* shape */ = {
+			isa = PBXGroup;
+			children = (
+				2A2F9F1626A183C500FACC82 /* Cuboid.cpp */,
+				2A2F9F1726A183C500FACC82 /* Cuboid.h */,
+			);
+			path = shape;
 			sourceTree = "<group>";
 		};
 		2A41F79326736FA600678B80 = {
@@ -1096,8 +1116,10 @@
 				2A41F7C82675109200678B80 /* stb_image.cpp in Sources */,
 				2A2F9F00269F129100FACC82 /* DirLight.cpp in Sources */,
 				2A2F9F1126A0234300FACC82 /* Attenuation.cpp in Sources */,
+				2A2F9F1E26A2FFCA00FACC82 /* Material.cpp in Sources */,
 				2A41F7BE2673927600678B80 /* Shader.cpp in Sources */,
 				2A41FD00267E310B00678B80 /* Camera.cpp in Sources */,
+				2A2F9F1826A183C500FACC82 /* Cuboid.cpp in Sources */,
 				2A2E3688269C69A600FBA2F1 /* Mesh.cpp in Sources */,
 				2A41F7BB267375D000678B80 /* glad.c in Sources */,
 				2A2F9EFA269EF8A000FACC82 /* Texture.cpp in Sources */,

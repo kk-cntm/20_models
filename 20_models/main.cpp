@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -11,6 +12,9 @@
 #include "render/light/SpotLight.h"
 #include "render/light/PointLight.h"
 #include "render/light/Attenuation.h"
+#include "render/shape/Cuboid.h"
+#include "render/Material.h"
+#include "render/IDrawable.h"
 
 int width = 800;
 int height = 600;
@@ -159,12 +163,19 @@ int main(int argc, const char * argv[]) {
     glfwSetScrollCallback(window, scroll_callback);
     
     render::Shader cubeProgram("./shaders/model-vs.glsl", "./shaders/model-fs.glsl");
+    render::Shader lightProgram("./shaders/light-vs.glsl", "./shaders/light-fs.glsl");
     render::Model backpackModel("./assets/backpack/backpack.obj");
     render::light::DirLight dirLight(
         glm::vec3(0.0f, 0.0f, -1.0f),
         glm::vec3(0.2f, 0.2f, 0.2f),
         glm::vec3(0.7f, 0.7f, 0.7f),
         glm::vec3(0.9f, 0.9f, 0.9f)
+    );
+    
+    auto spotLightCube = std::make_shared<render::shape::Cuboid>(
+        glm::vec3(0.0f, 0.0f, -1.0f),
+        render::Material::WhiteLight(),
+        glm::vec3(0.05f, 0.05f, 0.15f)
     );
     std::vector<render::light::SpotLight> spotLights = {
         render::light::SpotLight(
@@ -175,16 +186,24 @@ int main(int argc, const char * argv[]) {
             glm::vec3(0.6f, 0.6f, 0.6f),
             5.5f,
             8.0f,
-            render::light::Attenuation::n_7
+            render::light::Attenuation::n_7,
+            spotLightCube
         )
     };
+    
+    auto pointLightCube = std::make_shared<render::shape::Cuboid>(
+       glm::vec3(0.0342912f, 0.12814f, -1.87929f),
+       render::Material::WhiteLight(),
+       glm::vec3(0.1f)
+    );
     std::vector<render::light::PointLight> pointLights = {
         render::light::PointLight(
             glm::vec3(0.0342912f, 0.12814f, -1.87929f),
             glm::vec3(0.05f, 0.05f, 0.05f),
             glm::vec3(0.4f, 0.4f, 0.4f),
             glm::vec3(0.5f, 0.5f, 0.5f),
-            render::light::Attenuation::n_32
+            render::light::Attenuation::n_32,
+            pointLightCube
         )
     };
     
@@ -208,7 +227,6 @@ int main(int argc, const char * argv[]) {
         projection = glm::perspective(glm::radians(fov), (float)width / (float)height, 0.1f, 100.0f);
         
         cubeProgram.use();
-        
         cubeProgram.setValue("view", camera.GetView());
         cubeProgram.setValue("projection", projection);
         cubeProgram.setValue("model", model);
@@ -224,7 +242,20 @@ int main(int argc, const char * argv[]) {
             pointLights[i].Set(cubeProgram, i);
         }
         
+        cubeProgram.use();
         backpackModel.Draw(cubeProgram);
+        
+        lightProgram.use();
+        lightProgram.setValue("view", camera.GetView());
+        lightProgram.setValue("projection", projection);
+        
+        for (int i = 0; i < spotLights.size(); i++) {
+            spotLights[i].Draw(lightProgram);
+        }
+        
+        for (int i = 0; i < pointLights.size(); i++) {
+            pointLights[i].Draw(lightProgram);
+        }
         
         glfwPollEvents();
         glfwSwapBuffers(window);
